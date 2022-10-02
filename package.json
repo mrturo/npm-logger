@@ -1,0 +1,64 @@
+{
+  "name": "uncomplicated-winston-logger",
+  "description": "Winston Logger without complications",
+  "version": "1.0.4",
+  "author": "Arturo Mendoza <arturo.amb89@gmail.com>",
+  "license": "ISC",
+  "main": "dist/src/logger.js",
+  "typings": "dist/src/logger.d.js",
+  "homepage": "https://github.com/mrturo/uncomplicated-winston-logger#readme",
+  "keywords": [
+    "logger",
+    "loggers",
+    "wiston-logger",
+    "wiston"
+  ],
+  "scripts": {
+    "amend-commit": "git commit -a --amend && git push -f",
+    "build": "tsc",
+    "clean-windows": "rd /s /q node_modules && rd /s /q dist && rd /s /q coverage ",
+    "dev": "npm install && set NODE_ENV=development && ts-node-dev dist/src/main.js",
+    "install-build": "npm install && npm run build",
+    "lint": "eslint . --ext .ts --fix",
+    "prettier": "prettier --config .prettierrc src/**/*.ts test/**/*.ts *.js *.json *.yml *.md .eslintrc .prettierrc --write",
+    "prettier-lint": "npm install && npm run prettier & npm run lint",
+    "start": "set NODE_ENV=production && node dist/src/main.js",
+    "start:dev": "set NODE_ENV=development && node dist/src/main.js",
+    "test": "npm install && set NODE_ENV=testing && jest -c jest.config.js",
+    "test:integration": "npm install && set NODE_ENV=testing && jest -c jest.integration.config.js",
+    "test:unit": "npm install && set NODE_ENV=testing && jest -c jest.unit.config.js",
+    "all-in-one": "npm run install-build && npm run prettier-lint && set NODE_ENV=testing && npm run test -- --coverage && npm run test:unit -- --coverage",
+    "buld-npm-pack": "npm run all-in-one && npm pack",
+    "publish-npm": "npm run all-in-one && npm publish",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrturo/uncomplicated-winston-logger.git"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "bugs": {
+    "url": "https://github.com/mrturo/uncomplicated-winston-logger/issues"
+  },
+  "dependencies": {
+    "winston": "^3.8.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.4",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-plugin-sort-class-members": "^1.14.1",
+    "husky": "^8.0.1",
+    "jest": "^28.1.2",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.1.0",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.8.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  }
+}
